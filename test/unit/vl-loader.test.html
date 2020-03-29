@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../web-component-tester/browser.js"></script>
+
+  <script type="module" src="../../src/vl-loader.js"></script>
+</head>
+
+<body>
+  <test-fixture id="vl-loader-fixture">
+    <template>
+      <vl-loader></vl-loader>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="vl-loader-with-slot-fixture">
+    <template>
+      <vl-loader>
+        <span>Dit is een slot tekst</span>
+      </vl-loader>
+    </template>
+  </test-fixture>
+
+  <script>
+    suite('<vl-loader>', () => {
+      const should = chai.should();
+
+      test('bevat gecentreerd een loader indicator en een standaard tekst', () => {
+        const element = fixture('vl-loader-fixture');
+        const container = element.shadowRoot.querySelector('div');
+        const indicator = container.querySelector('.vl-loader');
+        const text = container.querySelector('#text');
+        should.exist(container);
+        should.exist(indicator);
+        should.exist(indicator);
+        assert.isTrue(container.classList.contains('vl-u-align-center'));
+        assert.equal(text.innerText, 'Pagina is aan het laden');
+      });
+
+      test('als de gebruiker een visuele beperking heeft zal hij zien dat iets specifiek aan het laden is', () => {
+        const element = fixture('vl-loader-fixture');
+        const indicator = element.shadowRoot.querySelector('.vl-loader');
+        assert.equal(indicator.getAttribute('role'), 'alert');
+        assert.equal(indicator.getAttribute('aria-busy'), 'true');
+      });
+
+      test('zal de juiste class zetten indien het light attribuut aanwezig is', () => {
+        const element = fixture('vl-loader-fixture');
+        const indicator = element.shadowRoot.querySelector('.vl-loader');
+        assert.isFalse(indicator.classList.contains('vl-loader--light'));
+        element.setAttribute('data-vl-light', '');
+        assert.isTrue(indicator.classList.contains('vl-loader--light'));
+      });
+
+      test('zal de tekst aanpassen aan de hand van het text attribuut', () => {
+        const element = fixture('vl-loader-fixture');
+        const text = element.shadowRoot.querySelector('#text');
+        const value = 'Dit is een test';
+        assert.notEqual(text.innerText, value);
+        element.setAttribute('data-vl-text', value);
+        assert.equal(text.innerText, value);
+      });
+
+      test('zal de tekst aanpassen aan de hand van het slot element', () => {
+        const element = fixture('vl-loader-with-slot-fixture');
+        const text = element.shadowRoot.querySelector('#text');
+        const value = element.querySelector('span').innerText;
+        assert.equal(text.querySelector('slot').assignedElements()[0].innerText, value);
+      });
+
+      test('zal geen tekst tonen wanneer het single attribuut aanwezig is', () => {
+        const element = fixture('vl-loader-with-slot-fixture');
+        const text = element.shadowRoot.querySelector('#text');
+        assert.isFalse(text.classList.contains('vl-u-visually-hidden'));
+        element.setAttribute('data-vl-single', '');
+        assert.isTrue(text.classList.contains('vl-u-visually-hidden'));
+      });
+    });
+
+  </script>
+</body>
+
+</html>
