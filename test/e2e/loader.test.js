@@ -32,6 +32,8 @@ describe('vl-loader', async () => {
     it('als gebruiker kan ik het verschil zien tussen een single en gewone loader', async () => {
         const loader = await vlLoaderPage.getLoader();
         const singleLoader = await vlLoaderPage.getSingleLoader();
+        assert.eventually.isFalse(loader.isSingle());
+        assert.eventually.isTrue(singleLoader.isSingle());
         assert.eventually.isTrue(loader.hasText());
         assert.eventually.isFalse(singleLoader.hasText());
     });
