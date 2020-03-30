@@ -7,7 +7,7 @@ import { VlElement, define } from '/node_modules/vl-ui-core/dist/vl-core.js';
  * 
  * @extends VlElement
  * 
- * @property {boolean} data-vl-light - Attribuut wordt gebruikt om een alternatieve rendering te bekomen voor op een te zorgen dat de radio getoond wordt als een block element en bijgevolg de breedte van de parent zal aannemen.
+ * @property {boolean} data-vl-light - Attribuut wordt gebruikt om een alternatieve rendering te bekomen in combinatie met een donkere achtergrond.
  * @property {boolean} data-vl-text - Attribuut wordt gebruikt om een informatieve tekst te tonen tijdens het laden.
  * @property {boolean} data-vl-single - Attribuut wordt gebruikt om aan te geven dat er geen tekst getoond mag worden.
  * 
