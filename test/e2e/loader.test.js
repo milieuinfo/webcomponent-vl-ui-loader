@@ -10,31 +10,31 @@ describe('vl-loader', async () => {
 
     it('als gebruiker kan ik zien dat de pagina aan het laden is', async () => {
         const loader = await vlLoaderPage.getLoader();
-        assert.eventually.isTrue(loader.isDisplayed());
-        assert.eventually.equal(loader.getText(), 'Pagina is aan het laden');
+        await assert.eventually.isTrue(loader.isDisplayed());
+        await assert.eventually.equal(loader.getText(), 'Pagina is aan het laden');
     });
 
     it('als gebruiker kan ik het verschil zien tussen een light en gewone loader', async () => {
         const loader = await vlLoaderPage.getLoader();
         const lightLoader = await vlLoaderPage.getLightLoader();
-        assert.eventually.isFalse(loader.isLight());
-        assert.eventually.isTrue(lightLoader.isLight());
+        await assert.eventually.isFalse(loader.isLight());
+        await assert.eventually.isTrue(lightLoader.isLight());
     });
 
     it('als gebruiker kan ik de loader tekst zien', async () => {
         const loader = await vlLoaderPage.getLoader();
         const slotLoader = await vlLoaderPage.getSlotLoader();
         const slot = await slotLoader.slotElements();
-        assert.eventually.equal(loader.getText(), 'Pagina is aan het laden');
-        assert.eventually.equal(slot[0].getText(), 'Informatie is aan het laden');
+        await assert.eventually.equal(loader.getText(), 'Pagina is aan het laden');
+        await assert.eventually.equal(slot[0].getText(), 'Informatie is aan het laden');
     });
 
     it('als gebruiker kan ik het verschil zien tussen een single en gewone loader', async () => {
         const loader = await vlLoaderPage.getLoader();
         const singleLoader = await vlLoaderPage.getSingleLoader();
-        assert.eventually.isFalse(loader.isSingle());
-        assert.eventually.isTrue(singleLoader.isSingle());
-        assert.eventually.isTrue(loader.hasText());
-        assert.eventually.isFalse(singleLoader.hasText());
+        await assert.eventually.isFalse(loader.isSingle());
+        await assert.eventually.isTrue(singleLoader.isSingle());
+        await assert.eventually.isTrue(loader.hasText());
+        await assert.eventually.isFalse(singleLoader.hasText());
     });
 });
