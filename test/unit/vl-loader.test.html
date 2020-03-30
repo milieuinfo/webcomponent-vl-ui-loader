@@ -30,13 +30,12 @@
 
       test('bevat gecentreerd een loader indicator en een standaard tekst', () => {
         const element = fixture('vl-loader-fixture');
-        const container = element.shadowRoot.querySelector('div');
+        const container = element.shadowRoot.querySelector('.vl-u-align-center');
         const indicator = container.querySelector('.vl-loader');
         const text = container.querySelector('#text');
         should.exist(container);
         should.exist(indicator);
         should.exist(indicator);
-        assert.isTrue(container.classList.contains('vl-u-align-center'));
         assert.equal(text.innerText, 'Pagina is aan het laden');
       });
 
