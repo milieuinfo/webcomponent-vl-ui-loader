@@ -50,9 +50,9 @@
 		"vl-ui-core": "^5.1.2"
 	},
 	"devDependencies": {
-		"@govflanders/vl-ui-util": "3.9.1",
 		"@govflanders/vl-ui-loader": "3.9.1",
-		"vl-ui-util": "5.1.5",
-		"vl-ui-grid": "^3.0.2"
+		"@govflanders/vl-ui-util": "3.9.1",
+		"vl-ui-grid": "^3.0.2",
+		"vl-ui-util": "^5.1.6"
 	}
 }
