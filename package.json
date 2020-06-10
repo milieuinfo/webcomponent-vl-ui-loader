@@ -1,6 +1,6 @@
 {
 	"name": "vl-ui-loader",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "De loader component is een animatie dat aangeeft dat een pagina of website aan het laden is.",
 	"author": "DIDM",
 	"license": "MIT",
