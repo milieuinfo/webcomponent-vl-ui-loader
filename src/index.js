@@ -1,3 +1,1 @@
-module.exports = {
-  VlLoader: require('../dist/vl-loader.src.js').VlLoader,
-};
+export * from '../dist/vl-loader.src.js';
